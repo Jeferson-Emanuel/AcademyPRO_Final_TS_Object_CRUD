@@ -6,7 +6,7 @@ export interface PaymentInput{
     payment_date: string
 };
 
-export interface PaymentInput{
+export interface PaymentOutput{
     payment_id: number,
     customer_id: number,
     staff_id: number,

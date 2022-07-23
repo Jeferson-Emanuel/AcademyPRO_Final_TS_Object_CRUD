@@ -1,5 +1,20 @@
 import { IUserRepository } from '@/app/database/repositories';
+import IInventoryRepository from '@/app/database/repositories/IInventoryRepository';
 import { UserRepository } from '@/app/database/repositories/implementation';
+import InventoryRepository from '@/app/database/repositories/implementation/InventoryRepository';
+import PaymentRepository from '@/app/database/repositories/implementation/PaymentRepository';
+import RentalRepository from '@/app/database/repositories/implementation/RentalRepository';
+import StaffRepository from '@/app/database/repositories/implementation/StaffRepository';
+import StoreRepository from '@/app/database/repositories/implementation/StoreRepository';
+import IPaymentRepository from '@/app/database/repositories/IPaymentRepository';
+import IRentalRepository from '@/app/database/repositories/IRentalRepository';
+import IStaffRepository from '@/app/database/repositories/IStaffRepository';
+import IStoreRepository from '@/app/database/repositories/IStoreRepository';
 import { container } from 'tsyringe';
 
+container.registerSingleton<IInventoryRepository>("InventoryRepository", InventoryRepository);
+container.registerSingleton<IPaymentRepository>("PaymentRepository", PaymentRepository);
+container.registerSingleton<IRentalRepository>("RentalRepository", RentalRepository);
+container.registerSingleton<IStaffRepository>("StaffRepository", StaffRepository);
+container.registerSingleton<IStoreRepository>("StoreRepository", StoreRepository);
 container.registerSingleton<IUserRepository>("UserRepository", UserRepository);
