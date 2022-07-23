@@ -3,7 +3,7 @@ import * as models from './models'
 
 const dialect = "postgres";
 
-const sequelize = new Sequelize("exampledb", "postgres", "123456", {
+const sequelize = new Sequelize("dvdrental", "postgres", "123456", {
     host: "localhost",
     dialect: dialect,
     define: {

@@ -11,7 +11,9 @@ import {
     Default,
 } from "sequelize-typescript";
 
-@Table
+@Table({
+    tableName: 'user'
+})
 class User extends Model {
     @Length({ min: 3, max: 255 })
     @AllowNull(false)
@@ -40,6 +42,6 @@ class User extends Model {
 
     @UpdatedAt
     updatedAt!: Date;
-}
+};
 
 export default User;
