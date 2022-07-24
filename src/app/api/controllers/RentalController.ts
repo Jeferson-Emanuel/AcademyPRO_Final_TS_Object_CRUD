@@ -10,6 +10,14 @@ class RentalController{
 
         res.status(200).send(result);
     };
+
+    public async getById(req: Request, res: Response): Promise<void> {
+        const rentalService = container.resolve(RentalService);
+
+        const result = await rentalService.getById(parseInt(req.params.id));
+
+        res.status(200).send(result);
+    };
 };
 
 export default RentalController;
