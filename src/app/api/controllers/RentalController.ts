@@ -18,6 +18,14 @@ class RentalController{
 
         res.status(200).send(result);
     };
+
+    public async create(req: Request, res: Response): Promise<void> {
+        const rentalService = container.resolve(RentalService);
+
+        const result = await rentalService.create(req.body);
+
+        res.status(201).send(result);
+    }
 };
 
 export default RentalController;

@@ -1,6 +1,7 @@
 import IRentalRepository from '@/app/database/repositories/IRentalRepository';
 import { ResourceNotFoundError } from '@/shared/errors';
-import { RentalOutput } from '@/shared/types/interfaces/Rental';
+import { RentalInput, RentalOutput } from '@/shared/types/interfaces/Rental';
+import { Model } from 'sequelize-typescript';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()
@@ -20,6 +21,10 @@ class RentalService{
         } catch (error) {
             return new ResourceNotFoundError;
         };        
+    };
+
+    public async create(data: RentalInput): Promise<Model> {
+        return await this.rentalRepository.create(data);
     };
 };
 

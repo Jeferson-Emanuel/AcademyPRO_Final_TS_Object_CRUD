@@ -1,5 +1,5 @@
-import { Model } from "sequelize-typescript";
 import { ResourceNotFoundError } from "@/shared/errors/";
+import { Model } from "sequelize-typescript";
 import IBaseRepository from "../IBaseRepository";
 
 // TODO: Find a way to remove the @ts-ignore comments without getting any errors

@@ -7,7 +7,7 @@ const rentalController = new RentalController();
 
 rentalRouter.get('/', rentalController.getAll);
 rentalRouter.get('/:id', rentalController.getById);
-//rentalRouter.post('/', rentalController.create);
+rentalRouter.post('/', rentalController.create);
 //rentalRouter.put('/:id', rentalController.updateById);
 //rentalRouter.delete('/:id', rentalController.deleteById);
 

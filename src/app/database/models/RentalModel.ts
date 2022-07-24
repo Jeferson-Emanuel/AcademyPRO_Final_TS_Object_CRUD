@@ -1,5 +1,5 @@
 import { NOW } from 'sequelize';
-import { AllowNull, BelongsTo, Column, DataType, Default, ForeignKey, HasMany, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, BelongsTo, Column, DataType, Default, ForeignKey, HasMany, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import Inventory from './InventoryModel';
 import Payment from './PaymentModel';
 import Staff from './StaffModel';
@@ -9,6 +9,7 @@ import Staff from './StaffModel';
 })
 class Rental extends Model{
     @PrimaryKey
+    @AutoIncrement
     @Column(DataType.INTEGER)
     rental_id!: number
 
