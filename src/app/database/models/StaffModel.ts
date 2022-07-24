@@ -1,4 +1,4 @@
-import { AllowNull, BelongsTo, Column, Default, ForeignKey, HasMany, IsEmail, Length, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, Column, DataType, Default, HasMany, IsEmail, Length, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import Payment from './PaymentModel';
 import Rental from './RentalModel';
 import Store from './StoreModel';
@@ -8,58 +8,58 @@ import Store from './StoreModel';
 })
 class Staff extends Model{
     @PrimaryKey
-    @Column
+    @Column(DataType.INTEGER)
     staff_id!: number
 
     @Length({max: 45})
     @AllowNull(false)
-    @Column
+    @Column(DataType.STRING(45))
     first_name!: string
 
     @Length({max: 45})
     @AllowNull(false)
-    @Column
+    @Column(DataType.STRING(45))
     last_name!: string
 
-    @ForeignKey(() => Address)
+    //@ForeignKey(() => Address)
     @AllowNull(false)
-    @Column
+    @Column(DataType.INTEGER)
     address_id!: number
 
     @IsEmail
     @Length({max: 50})
     @AllowNull(true)
-    @Column
+    @Column(DataType.STRING(50))
     email!: string
 
     @AllowNull(false)
-    @Column
+    @Column(DataType.INTEGER)
     store_id!: number
 
     @AllowNull(false)
     @Default(true)
-    @Column
+    @Column(DataType.BOOLEAN)
     active!: Boolean
 
     @Length({max: 16})
     @AllowNull(false)
-    @Column
+    @Column(DataType.STRING(16))
     username!: string
 
     @Length({max: 40})
     @AllowNull(true)
-    @Column
+    @Column(DataType.STRING(40))
     password!: string
 
     @UpdatedAt
     last_update!: Date
 
     @AllowNull(true)
-    @Column
+    @Column(DataType.BLOB)
     picture!: string
 
-    @BelongsTo(() => Address)
-    adress!: Address
+    //@BelongsTo(() => Address)
+    //adress!: Address
 
     @HasMany(() => Payment)
     payments!: Payment[]

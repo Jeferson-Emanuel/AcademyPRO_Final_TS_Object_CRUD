@@ -1,5 +1,5 @@
 import { NOW } from 'sequelize';
-import { AllowNull, BelongsTo, Column, Default, ForeignKey, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, BelongsTo, Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import Staff from './StaffModel';
 
 @Table({
@@ -7,26 +7,26 @@ import Staff from './StaffModel';
 })
 class Store extends Model{
     @PrimaryKey
-    @Column
+    @Column(DataType.INTEGER)
     store_id!: number
 
     @ForeignKey(() => Staff)
     @AllowNull(false)
-    @Column
+    @Column(DataType.INTEGER)
     manager_staff_id!: number
 
-    @ForeignKey(() => Address)
+    //@ForeignKey(() => Address)
     @AllowNull(false)
-    @Column
+    @Column(DataType.INTEGER)
     address_id!: number
 
     @Default(NOW)
     @UpdatedAt
-    @Column
+    @Column(DataType.DATE)
     last_update!: Date
 
-    @BelongsTo(() => Address)
-    address!: Address
+    //@BelongsTo(() => Address)
+    //address!: Address
     @BelongsTo(() => Staff)
     staff!: Staff
 };
