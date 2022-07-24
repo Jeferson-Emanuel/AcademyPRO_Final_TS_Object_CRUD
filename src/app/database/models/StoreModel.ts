@@ -1,5 +1,5 @@
 import { NOW } from 'sequelize';
-import { AllowNull, BelongsTo, Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, BelongsTo, Column, DataType, Default, ForeignKey, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import Staff from './StaffModel';
 
 @Table({
@@ -7,6 +7,7 @@ import Staff from './StaffModel';
 })
 class Store extends Model{
     @PrimaryKey
+    @AutoIncrement
     @Column(DataType.INTEGER)
     store_id!: number
 

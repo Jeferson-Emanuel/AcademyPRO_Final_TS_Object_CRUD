@@ -1,4 +1,4 @@
-import { AllowNull, Column, DataType, HasMany, Model, PrimaryKey, Table, UpdatedAt } from "sequelize-typescript";
+import { AllowNull, AutoIncrement, Column, DataType, HasMany, Model, PrimaryKey, Table, UpdatedAt } from "sequelize-typescript";
 //import Film from './FilmModel';
 import Rental from './RentalModel';
 
@@ -7,6 +7,7 @@ import Rental from './RentalModel';
 })
 class Inventory extends Model {
     @PrimaryKey
+    @AutoIncrement
     @Column(DataType.INTEGER)
     inventory_id!: number;
 

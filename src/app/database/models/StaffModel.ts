@@ -1,4 +1,4 @@
-import { AllowNull, Column, DataType, Default, HasMany, IsEmail, Length, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, AutoIncrement, Column, DataType, Default, HasMany, IsEmail, Length, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import Payment from './PaymentModel';
 import Rental from './RentalModel';
 import Store from './StoreModel';
@@ -8,6 +8,7 @@ import Store from './StoreModel';
 })
 class Staff extends Model{
     @PrimaryKey
+    @AutoIncrement
     @Column(DataType.INTEGER)
     staff_id!: number
 

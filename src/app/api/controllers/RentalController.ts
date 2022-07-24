@@ -25,7 +25,15 @@ class RentalController{
         const result = await rentalService.create(req.body);
 
         res.status(201).send(result);
-    }
+    };
+
+    public async updateById(req: Request, res: Response): Promise<void> {
+        const rentalService = container.resolve(RentalService);
+
+        const result = await rentalService.updateById(parseInt(req.params.id), req.body);
+
+        res.status(200).send(result);
+    };
 };
 
 export default RentalController;
