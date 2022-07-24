@@ -33,6 +33,14 @@ class RentalService{
             return error;
         };
     };
+
+    public async deleteById(id: number): Promise<boolean|unknown> {
+        try{
+            return await this.rentalRepository.deleteById(id);
+        }catch(error){
+            return error;
+        };
+    };
 };
 
 export default RentalService;

@@ -34,6 +34,14 @@ class RentalController{
 
         res.status(200).send(result);
     };
+
+    public async deleteById(req: Request, res: Response): Promise<void> {
+        const rentalService = container.resolve(RentalService);
+
+        const result = await rentalService.deleteById(parseInt(req.params.id));
+
+        res.status(200).send(result);
+    };
 };
 
 export default RentalController;
