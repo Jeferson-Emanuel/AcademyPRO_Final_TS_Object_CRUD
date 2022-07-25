@@ -6,7 +6,16 @@ class RentalController{
     public async getAll(req: Request, res: Response): Promise<void> {
         const rentalService = container.resolve(RentalService);
 
-        const result = await rentalService.getAll();
+        const query = {
+            size: req.query.size,
+            page: req.query.page,
+            sort: req.query.sort,
+            order: req.query.order
+        };
+
+        const attributes = Object.values(query).map((x) => x as string);
+
+        const result = await rentalService.getAll(attributes);
 
         res.status(200).send(result);
     };
