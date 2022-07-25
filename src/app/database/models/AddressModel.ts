@@ -9,7 +9,8 @@ import {
     Default,
     AutoIncrement,
     DataType,
-    PrimaryKey
+    PrimaryKey,
+    BelongsTo
 } from "sequelize-typescript";
 import { NOW } from 'sequelize';
 import City from './CityModel';
@@ -41,6 +42,9 @@ class Address extends Model {
     @AllowNull(false)
     @Column(DataType.INTEGER)
     city_id!: number;
+
+    @BelongsTo(() => City)
+    city!: City
 
     @Length({max: 20})
     @Column

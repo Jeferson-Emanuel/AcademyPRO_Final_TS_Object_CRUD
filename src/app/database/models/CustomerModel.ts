@@ -10,7 +10,8 @@ import {
     Default,
     DataType,
     AutoIncrement,
-    PrimaryKey
+    PrimaryKey,
+    BelongsTo,
 } from "sequelize-typescript";
 import { NOW } from 'sequelize';
 import Address from './AddressModel';
@@ -28,6 +29,9 @@ class Customer extends Model {
     @AllowNull(false)
     @Column
     store_id!: number;
+
+    // @BelongsTo(() => store)
+    // store!: store
 
     @Length({max: 50})
     @AllowNull(false)
@@ -49,6 +53,9 @@ class Customer extends Model {
     @AllowNull(false)
     @Column
     address_id!: number;
+
+    @BelongsTo(() => Address)
+    address!: Address
 
     @Column
     activebool!: boolean;

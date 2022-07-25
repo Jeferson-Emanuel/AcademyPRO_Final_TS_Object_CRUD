@@ -9,7 +9,8 @@ import {
     Default,
     AutoIncrement,
     DataType,
-    PrimaryKey
+    PrimaryKey,
+    BelongsTo
 } from "sequelize-typescript";
 import { NOW } from 'sequelize';
 import Country from './CountryModel';
@@ -32,6 +33,9 @@ class City extends Model {
     @AllowNull(false)
     @Column(DataType.INTEGER)
     country_id!: number;
+
+    @BelongsTo(() => Country)
+    country!: Country
 
     @Default(NOW)
     @UpdatedAt
