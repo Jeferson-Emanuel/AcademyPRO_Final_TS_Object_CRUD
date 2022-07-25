@@ -19,7 +19,7 @@ class RentalService{
             return await this.rentalRepository.getById(id);
         }catch(error){
             return error;
-        };        
+        };
     };
 
     public async create(data: RentalInput): Promise<Model> {

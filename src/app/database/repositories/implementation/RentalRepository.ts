@@ -1,5 +1,5 @@
 import { RentalInput, RentalOutput } from '@/shared/types/interfaces/Rental';
-import { OrderItem } from 'sequelize';
+import { OrderItem } from 'sequelize/types';
 import { BaseRepository } from '.';
 import Rental from '../../models/RentalModel';
 import IRentalRepository from '../IRentalRepository';
