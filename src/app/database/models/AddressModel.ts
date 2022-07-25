@@ -7,6 +7,9 @@ import {
     ForeignKey,
     UpdatedAt,
     Default,
+    AutoIncrement,
+    DataType,
+    PrimaryKey
 } from "sequelize-typescript";
 import { NOW } from 'sequelize';
 import City from './CityModel';
@@ -15,7 +18,9 @@ import City from './CityModel';
     tableName: 'address'
 })
 class Address extends Model {
-    @Column ({ primaryKey: true })
+    @PrimaryKey
+    @AutoIncrement
+    @Column(DataType.INTEGER)
     address_id!: number;
 
     @Length({max: 200})
@@ -34,7 +39,7 @@ class Address extends Model {
 
     @ForeignKey(() => City)
     @AllowNull(false)
-    @Column
+    @Column(DataType.INTEGER)
     city_id!: number;
 
     @Length({max: 20})
@@ -48,6 +53,7 @@ class Address extends Model {
 
     @Default(NOW)
     @UpdatedAt
+    @Column(DataType.DATE)
     last_update!: Date
 }
 

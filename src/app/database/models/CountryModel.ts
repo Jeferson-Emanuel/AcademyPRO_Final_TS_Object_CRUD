@@ -4,9 +4,11 @@ import {
     Model,
     Length,
     AllowNull,
-    ForeignKey,
     UpdatedAt,
     Default,
+    AutoIncrement,
+    DataType,
+    PrimaryKey,
 } from "sequelize-typescript";
 import { NOW } from 'sequelize';
 
@@ -14,7 +16,9 @@ import { NOW } from 'sequelize';
     tableName: 'country'
 })
 class Country extends Model {
-    @Column ({ primaryKey: true })
+    @PrimaryKey
+    @AutoIncrement
+    @Column(DataType.INTEGER) 
     country_id!: number;
 
     @Length({max: 100})
@@ -24,6 +28,7 @@ class Country extends Model {
 
     @Default( NOW )
     @UpdatedAt
+    @Column(DataType.DATE)
     last_update!: Date
 }
 

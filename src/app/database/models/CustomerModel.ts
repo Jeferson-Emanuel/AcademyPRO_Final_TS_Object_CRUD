@@ -8,6 +8,9 @@ import {
     IsEmail,
     UpdatedAt,
     Default,
+    DataType,
+    AutoIncrement,
+    PrimaryKey
 } from "sequelize-typescript";
 import { NOW } from 'sequelize';
 import Address from './AddressModel';
@@ -16,9 +19,12 @@ import Address from './AddressModel';
     tableName: 'customer'
 })
 class Customer extends Model {
-    @Column ({ primaryKey: true })
+    @PrimaryKey
+    @Column(DataType.INTEGER)
+    @AutoIncrement
     customer_id!: number;
 
+    // @ForeignKey(() => store)
     @AllowNull(false)
     @Column
     store_id!: number;
@@ -55,7 +61,7 @@ class Customer extends Model {
 
     @AllowNull(false)
     @Default(true)
-    @Column
+    @Column(DataType.BOOLEAN)
     active!: Boolean
 
 
