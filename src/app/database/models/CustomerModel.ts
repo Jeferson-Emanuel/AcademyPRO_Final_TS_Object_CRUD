@@ -17,12 +17,11 @@ import { NOW } from 'sequelize';
 import Address from './AddressModel';
 
 @Table({
-    tableName: 'customer'
+    modelName: 'customer'
 })
 class Customer extends Model {
     @PrimaryKey
-    @Column(DataType.INTEGER)
-    @AutoIncrement
+    @Column
     customer_id!: number;
 
     // @ForeignKey(() => store)
@@ -62,14 +61,14 @@ class Customer extends Model {
 
     create_date!: Date;
 
-    @Default(NOW)
+    @Default(NOW())
+    @Column
     @UpdatedAt
     last_update!: Date
 
     @AllowNull(false)
-    @Default(true)
-    @Column(DataType.BOOLEAN)
-    active!: Boolean
+    @Column
+    active!: number
 
 
 };
