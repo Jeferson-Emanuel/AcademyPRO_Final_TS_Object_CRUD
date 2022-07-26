@@ -10,8 +10,8 @@ class RentalService{
         private readonly rentalRepository: IRentalRepository
     ){};
 
-    public async getAll(attributes?: string[]): Promise<RentalOutput[]>{
-        return await this.rentalRepository.getAll(attributes);
+    public async getAll(queryAtt: string[], attributes?: string[]): Promise<RentalOutput[]>{
+        return await this.rentalRepository.getAll(queryAtt, attributes)
     };
 
     public async getById(id: number): Promise<RentalOutput|unknown>{

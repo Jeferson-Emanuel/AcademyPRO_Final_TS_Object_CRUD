@@ -1,30 +1,29 @@
 import { RentalInput, RentalOutput } from '@/shared/types/interfaces/Rental';
-import { OrderItem } from 'sequelize/types';
+import QueryFilter from '@/shared/utils/QueryFilter';
 import { BaseRepository } from '.';
+import { Customer, Staff } from '../../models';
 import Rental from '../../models/RentalModel';
 import IRentalRepository from '../IRentalRepository';
+
+// interface whereValuesInterface {[index: string]: number|string};
 
 class RentalRepository extends BaseRepository<RentalInput, RentalOutput> implements IRentalRepository{
     constructor(){
         super(Rental);
     };
 
-    public async getAll(attributes?: string[]): Promise<RentalOutput[]> {
-        let size, page, sort, order;
-        if(attributes){
-            [size, page, sort, order] = attributes;
-        }
-        (size)? size=parseInt(size) : size=5;
-        (page)? page=parseInt(page) : page=0;
-        (sort)? sort=sort : sort=Rental.primaryKeyAttribute as string;
-        (order)? order=order : order='ASC'
-        //console.log(size, page, sort, order);
+    public async getAll(queryAtt: string[], attributes?: string[]): Promise<RentalOutput[]> {
+        const queryBuilder = new QueryFilter();
+        const filters = queryBuilder.buildFilters(Rental.primaryKeyAttribute, queryAtt);
+
         // @ts-ignore
         return this.model.findAndCountAll({
-            //attributes,
-            limit: size,
-            offset: page*size,
-            order: [[sort, order] as OrderItem]
+            attributes: ['rental_id', "rental_date", "inventory_id"],
+            include: [
+                {model: Customer, attributes: ['customer_id', 'first_name', 'last_name']},
+                {model: Staff, attributes: ['staff_id', 'first_name', 'last_name']}
+            ],
+            ...filters
         });
     };
 };

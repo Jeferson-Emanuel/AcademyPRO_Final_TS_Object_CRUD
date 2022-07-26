@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
-import * as models from './models'
+import * as models from './models';
 
 const dialect = "postgres";
 
@@ -15,7 +15,7 @@ const sequelize = new Sequelize("dvdrental", "postgres", "123456", {
     models: Object.values(models),
 });
 
-export const connectDatabase = async () => { 
+export const connectDatabase = async () => {
     await sequelize
         .authenticate()
         .then(() => {

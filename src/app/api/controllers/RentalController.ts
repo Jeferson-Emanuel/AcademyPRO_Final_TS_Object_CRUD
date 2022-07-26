@@ -10,12 +10,16 @@ class RentalController{
             size: req.query.size,
             page: req.query.page,
             sort: req.query.sort,
-            order: req.query.order
+            order: req.query.order,
+            filterField: req.query.filterField,
+            filterValue: req.query.filterValue
         };
 
-        const attributes = Object.values(query).map((x) => x as string);
+        //const attributes = ['rental_id', 'customer_id'];
 
-        const result = await rentalService.getAll(attributes);
+        const queryAtt = Object.values(query).map((x) => x as string);
+
+        const result = await rentalService.getAll(queryAtt);
 
         res.status(200).send(result);
     };

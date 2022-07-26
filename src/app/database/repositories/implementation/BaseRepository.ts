@@ -8,9 +8,16 @@ abstract class SequelizeBaseRepository<Input, Output>
 {
     constructor(protected model: typeof Model) {}
 
-    public async getAll(attributes?: string[]): Promise<Output[]> {
+    /* public async getAll(attributes?: string[]): Promise<Output[]> {
         // @ts-ignore
         return this.model.findAll({
+            attributes,
+        });
+    } */
+
+    public async getAll(attributes?: string[]): Promise<Output[]> {
+        // @ts-ignore
+        return this.model.findAndCountAll({
             attributes,
         });
     }
